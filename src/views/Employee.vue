@@ -7,7 +7,7 @@ import { onMounted, ref, watch } from 'vue'
 const dialogVisible = ref(false)
 const form = ref({
   id: undefined,
-  userName: '',
+  username: '',
   age: undefined,
   email: '',
 })
@@ -49,7 +49,7 @@ async function addEmployee() {
     ElMessage.success('新增員工成功')
     form.value = {
       id: undefined,
-      userName: '',
+      username: '',
       age: undefined,
       email: '',
       job: '',
@@ -86,7 +86,7 @@ function closeDialog() {
 function cleanEmployee() {
   form.value = {
     id: undefined,
-    userName: '',
+    username: '',
     age: undefined,
     email: '',
   }
@@ -120,7 +120,7 @@ onMounted(() => {
       style="width: 100%"
       stripe
     >
-      <el-table-column prop="userName" label="姓名" width="180" />
+      <el-table-column prop="username" label="姓名" width="180" />
       <el-table-column prop="age" label="年齡" />
       <el-table-column prop="email" label="電子郵件">
         <template #header>
@@ -151,7 +151,7 @@ onMounted(() => {
     <el-pagination
       v-model:current-page="currentPage"
       v-model:page-size="pageSize"
-      class="mx-auto"
+      class="mx-auto mb-5"
       :page-sizes="[1, 10, 20, 30, 40]"
       layout="sizes, prev, pager, next"
       background
@@ -160,10 +160,10 @@ onMounted(() => {
       @current-change="handleCurrentChange"
     />
 
-    <el-dialog v-model="dialogVisible" title="新增員工" width="30%" draggable>
+    <el-dialog v-model="dialogVisible" :title="form.id ? '編輯員工' : '新增員工'" width="30%" draggable>
       <el-form :model="form" label-width="auto">
         <el-form-item label="姓名">
-          <el-input v-model="form.userName" />
+          <el-input v-model="form.username" />
         </el-form-item>
         <el-form-item label="年齡">
           <el-input v-model="form.age" />

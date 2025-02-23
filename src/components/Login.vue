@@ -11,7 +11,7 @@ const token = ref('')
 async function login() {
   try {
     const res = await api.post('/login', {
-      account: account.value,
+      username: account.value,
       password: password.value,
   })
     token.value = res
@@ -32,7 +32,7 @@ async function login() {
         <div id="form-container" class="bg-white p-16 rounded-lg shadow-2xl w-80 relative z-10 transform transition duration-500 ease-in-out">
           <h2 id="form-title" class="text-center text-3xl font-bold mb-10 text-gray-800">Login</h2>
           <form class="space-y-5">
-            <input class="w-full h-12 border border-gray-800 px-3 rounded-lg" placeholder="Email" id="" name="" type="text" v-model="accout">
+            <input class="w-full h-12 border border-gray-800 px-3 rounded-lg" placeholder="Account" id="" name="" type="text" v-model="account">
             <input class="w-full h-12 border border-gray-800 px-3 rounded-lg" placeholder="Password" id="" name="" type="password" v-model="password">
             <button class="w-full h-12 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline cursor-pointer" @click.prevent="login">Sign in</button>
           </form>
